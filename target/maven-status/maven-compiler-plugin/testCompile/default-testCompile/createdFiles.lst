@@ -1,0 +1,7 @@
+ttmik\pages\TtmikLoginPage.class
+ttmik\google\GoogleLogin.class
+ttmik\google\model\GooglePage.class
+ttmik\facebook\model\FacebookPage.class
+ttmik\apple\AppleLogin.class
+SeleniumTests.class
+ttmik\facebook\FacebookLogin.class

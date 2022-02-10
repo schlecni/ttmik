@@ -1,42 +1,34 @@
 package ttmik.model;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class GooglePage {
-
-    private final WebDriver driver;
+public class GooglePage implements LoginPage {
 
     @FindBy(css = "#identifierId")
-    WebElement emailField;
+    private WebElement emailField;
     @FindBy(css = "#identifierNext > div > button > span")
-    WebElement loginButton;
+    private WebElement loginButton;
     @FindBy(xpath = "//a[@href='#' or starts-with(@href, 'https://talktomeinkorean.com/sign-in/?loginSocial=google')]")
     private WebElement googleLoginButton;
 
-    public GooglePage(WebDriver driver) {
-        this.driver = driver;
-    }
-
-    public void enterEmail(String email) {
+    @Override
+    public void fillInEmail(String email) {
         emailField.sendKeys(email);
     }
 
-    public void getEmaiField() {
-        emailField.getText();
+    @Override
+    public void fillInPassword(String password) {
+        //TODO to be implemented when needed
     }
 
-    public void clickLoginButton() {
+    @Override
+    public void login() {
         loginButton.click();
     }
-//
-//    public String getErrorMessage() {
-//        return errorMessage.getText();
-//    }
 
-    public void clickGoogleIcon(){
+    @Override
+    public void clickPlatformIcon() {
         googleLoginButton.click();
     }
-
 }

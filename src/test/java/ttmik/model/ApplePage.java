@@ -1,39 +1,36 @@
 package ttmik.model;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ApplePage {
-
-    private final WebDriver driver;
+public class ApplePage implements LoginPage {
 
     @FindBy(id = "account_name_text_field")
     private WebElement appleIdInput;
-    @FindBy(id= "password_text_field")
-    WebElement password;
+    @FindBy(id = "password_text_field")
+    private WebElement pass;
     @FindBy(id = "sign-in")
-    WebElement signInButton;
+    private WebElement signInButton;
     @FindBy(xpath = "//a[@href='#' or starts-with(@href, 'https://talktomeinkorean.com/sign-in/?loginSocial=apple')]")
     private WebElement appleLoginButton;
 
-    public ApplePage(WebDriver driver) {
-        this.driver = driver;
+    @Override
+    public void fillInEmail(String email) {
+        appleIdInput.sendKeys(email);
     }
 
-    public void enterAppleId(String strInput) {
-        appleIdInput.sendKeys(strInput);
+    @Override
+    public void fillInPassword(String password) {
+        pass.sendKeys(password);
     }
 
-    public void enterPassword(String pass){
-        password.sendKeys(pass);
-    }
-
-    public void clickSignIn(){
+    @Override
+    public void login() {
         signInButton.click();
     }
 
-    public void clickAppleIcon(){
+    @Override
+    public void clickPlatformIcon() {
         appleLoginButton.click();
     }
 }
